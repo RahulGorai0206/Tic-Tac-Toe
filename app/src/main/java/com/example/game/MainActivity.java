@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     // 0 -> X
@@ -23,12 +24,17 @@ public class MainActivity extends AppCompatActivity {
             GameState[TappedImage]= ActivePlayer; // Set X / O on the tapped position.
             if(ActivePlayer==0){
                 img.setImageResource(R.drawable.x);
-                ActivePlayer=1;
+                ActivePlayer=1; // Set the next active player.
+                TextView status= findViewById(R.id.status_bar); // Get the element by its id.
+                status.setText("O's Turn"); // Set indicator to this string
             } else{
               img.setImageResource(R.drawable.o);
-              ActivePlayer=0;
+              ActivePlayer=0; // Set the next active player.
+                TextView status= findViewById(R.id.status_bar); // Get the element by its id.
+                status.setText("X's Turn"); // Set indicator to this string
             };
         };
+
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
