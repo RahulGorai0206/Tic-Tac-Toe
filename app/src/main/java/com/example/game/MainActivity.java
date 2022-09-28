@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
     // 0 -> X
     // 1 -> O
     Boolean GameActive=true; // At first set game as active.
+    int draw=0 ,counter=0; // Indicator and counter of the draw.
     int ActivePlayer=0; // The active player will be "X" by default. // 0 -> X , 1 -> O, 2 -> NULL.
     int [] GameState={2,2,2,2,2,2,2,2,2}; // Starting state of the game.
     int[][] WinPositions={ // Game winning positions on the grid.
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
                 {0,4,8},{2,4,6}
     };
     public void OnTap(View view){
+        counter++; // Increse the counter in every tap.
         ImageView img=(ImageView) view; // Storing the view in image view.
         int TappedImage=Integer.parseInt(img.getTag().toString()); // Get the tag of the tapped location.
         if(GameState[TappedImage]==2 && GameActive==true){ // Check if the place is empty or not. and start the game it it's in active state.
@@ -40,18 +42,26 @@ public class MainActivity extends AppCompatActivity {
                 if(GameState[WinPosition[0]]==0){
                     TextView status= findViewById(R.id.textView2); // Get the element by its id.
                     status.setText("X Won the game"); // Set indicator to this string.
+                    draw=1; // Set to 1 if anyone won so it is not gonna draw anymore.
                     GameActive=false; // Game will not active after winning.
                 }else{
                     TextView status1= findViewById(R.id.textView2); // Get the element by its id.
                     status1.setText("O Won the game"); // Set indicator to this string.
+                    draw=1; // Set to 1 if anyone won so it is not gonna draw anymore.
                     GameActive=false;
                 };
             };
+        if (counter==9 && draw==0){
+            TextView status1= findViewById(R.id.textView2); // Get the element by its id.
+            status1.setText("Game Draw, Reset the game"); // Set indicator to this string.
+        }
     };
     public void GameResett(View view){ // Only will be called when tapping on the reset button.
         GameActive=true; // Active the game.
         ActivePlayer=0; // Set the active player.
         TextView status= findViewById(R.id.textView2); // Get the element by its id.
+        draw=0; // Set to zero on reset.
+        counter=0; // Set to 0 on reset.
         status.setText("X's Turn"); // Set indicator to this string.
         for(int i=0; i<GameState.length;i++){
             GameState[i]=2; // Set all fields to no active player.
