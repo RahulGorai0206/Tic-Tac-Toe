@@ -3,4 +3,5 @@
     <string name="heading">Tic Tac Toe</string>
     <string name="grid_content">Main Frame of game</string>
     <string name="status_bar">X\'s Turn</string>
+    <string name="GameReset">Reset</string>
 </resources>
