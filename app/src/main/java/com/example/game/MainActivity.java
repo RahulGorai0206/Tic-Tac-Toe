@@ -34,11 +34,20 @@ public class MainActivity extends AppCompatActivity {
                 status.setText("X's Turn"); // Set indicator to this string
             };
         };
-
-    }
+        for(int[] WinPosition:WinPositions)
+            if(GameState[WinPosition[0]]==GameState[WinPosition[1]] && GameState[WinPosition[1]]==GameState[WinPosition[2]] && GameState[WinPosition[0]] != 2){
+                if(GameState[WinPosition[0]]==0){
+                    TextView status= findViewById(R.id.status_bar); // Get the element by its id.
+                    status.setText("X Won the game"); // Set indicator to this string
+                }else{
+                    TextView status1= findViewById(R.id.status_bar); // Get the element by its id.
+                    status1.setText("O Won the game"); // Set indicator to this string
+                };
+            };
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-}
+    };
+};
