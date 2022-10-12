@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Game</string>
+    <string name="app_name">Tic-Tac-Toe</string>
     <string name="heading">Tic Tac Toe</string>
     <string name="grid_content">Main Frame of game</string>
     <string name="status_bar">X\'s Turn</string>
